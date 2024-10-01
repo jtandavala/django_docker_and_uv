@@ -1,0 +1,17 @@
+services:
+  web:
+    build: .
+    ports:
+      - 8000:8000
+    environment:
+      - .env
+
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - .venv/
+        - action: rebuild
+          path: ./pyproject.toml
